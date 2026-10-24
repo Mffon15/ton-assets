@@ -1,7 +1,7 @@
 [
  {
   "address": "0:4ed8cc9c2e3186d5697982a91f754f1b635e57eb0f9fd499db968ea8f219be61",
-  "description": "Blink Genesis NFT is a limited collection of 3,333 unique NFTs, merging cutting-edge technology with next-gen gaming. Here, blinking isn\u2019t just a reflex\u2014it\u2019s your path to earning in Web3!",
+  "description": "Blink Genesis NFT is a limited collection of 3,333 unique NFTs, merging cutting-edge technology with next-gen gaming. Here, blinking isn’t just a reflex—it’s your path to earning in Web3!",
   "image": "https://raw.githubusercontent.com/blinkgame/logo/refs/heads/main/Blink%20Logo.png",
   "name": "Blink AI Genesis NFT",
   "social": [
@@ -27,6 +27,17 @@
  {
   "address": "0:ac096c161074b405a1217302777eddc6117a02d17775089de18004a3d78f8d55",
   "name": "Booli Reborn"
+ },
+ {
+  "address": "0:6a2d41ed3529be50921a52fa4c4b2e10c36cbb8cade3baf823f494f5ec96fdc2",
+  "name": "CITY Holder | Crystal Collection",
+  "social": [
+   "https://t.me/CITY_Holder",
+   "http://x.com/City_Holder"
+  ],
+  "websites": [
+   "http://holder.city"
+  ]
  },
  {
   "address": "0:b679515cfc1f44d7a314609c65216d243939142794b054a7b01655cccec69786",
@@ -110,6 +121,19 @@
   "name": "StickerBox Golden Sunrise"
  },
  {
+  "address": "0:ae18071a98057202c5258faa02575296b02bffef7e99c501a489d542a6fd4122",
+  "description": "The official kitty collection for the GRAM community. Born from memes, powered by Telegram culture, and raised on TON. Built by Grambo.fun for holders, builders, and believers of the GRAM ecosystem.",
+  "image": "https://assets.grambo.fun/kitty/collection.gif",
+  "name": "Gram Kitty",
+  "social": [
+   "https://x.com/grambofun",
+   "https://t.me/grambofun"
+  ],
+  "websites": [
+   "https://grambo.fun/"
+  ]
+ },
+ {
   "address": "0:3af3cfb004b956ad50bdbf48f16aec51511a8da3a167252c68b3851e9bf82abd",
   "name": "Hidden Dragon"
  },
@@ -148,6 +172,19 @@
   "name": "StickerBox Sleeping Giant"
  },
  {
+  "address": "0:9bfd0f65e9624c0043c80e3677a71329d0f515f6f40bcef171552e796770134d",
+  "description": "Planets from Stellarium, a Telegram Mini App game. Each NFT is a planet a player owns and plays with in the game — it has rarity, genes, a level and a production rate, and it keeps developing after it is minted or bought.",
+  "image": "https://s.getgems.io/nft/b/c/6a72eff8759f2ee050935d1d/edit/images/1953238.jpg",
+  "name": "Stellarium Worlds",
+  "social": [
+   "https://t.me/Timegalaxy_bot",
+   "https://t.me/time_meme_chat"
+  ],
+  "websites": [
+   "https://memetimeton.fun/"
+  ]
+ },
+ {
   "address": "0:80d78a35f955a14b679faa887ff4cd5bfc0f43b4a4eea2a7e6927f3701b273c2",
   "name": "Telegram usernames",
   "websites": [
@@ -168,8 +205,22 @@
   "name": "StickerBox TON's Witnesses"
  },
  {
+  "address": "0:949eb7fedf26700c469a9ee5c3b7316da8d5aa29d435b1a0140fbae4c82b6234",
+  "description": "Victor Unleashed is the limited edition NFT collection of Victor's Company, the Telegram mining game on TON: 1,111 unique miners, each a one-of-a-kind mix of background, pattern, frame and miner, so no two are alike. Minted in the Victor's Company Telegram app.",
+  "name": "Victor Unleashed",
+  "social": [
+   "https://x.com/VictorsCompany",
+   "https://t.me/Victors_Company",
+   "https://t.me/VictorsCompanyChat",
+   "https://t.me/VictorsCompanyBot/app"
+  ],
+  "websites": [
+   "https://victors.company"
+  ]
+ },
+ {
   "address": "0:f56156f01b974d57d959833d7c178723066e62a985f2794a9d19edb52578ec2c",
-  "description": "THE GOLDEN ORC HUNTING SEASON IS OPEN! ZarGates offers a massive bounty to all treasure hunters out there for capturing them. \ud83d\udd25 OPEN GIFTBOXES, pull Stickerboxes, and collect Golden Orc stickers to claim the most valuable rewards from ZarGates! 100% of all proceeds go toward the prize pool and collection promotion. \ud83d\udc8e Don't miss your chance to claim your share of the loot from the $300,000 prize pool! \u2705 Details in the official channels: TG ENG: https://t.me/ZarGatesChannel TG RU: http://t.me/ZarGatesRU X: https://x.com/ZARGATES Website: zargates.com \ud83d\ude80 Let's go \u2014 adventure awaits!",
+  "description": "THE GOLDEN ORC HUNTING SEASON IS OPEN! ZarGates offers a massive bounty to all treasure hunters out there for capturing them. 🔥 OPEN GIFTBOXES, pull Stickerboxes, and collect Golden Orc stickers to claim the most valuable rewards from ZarGates! 100% of all proceeds go toward the prize pool and collection promotion. 💎 Don't miss your chance to claim your share of the loot from the $300,000 prize pool! ✅ Details in the official channels: TG ENG: https://t.me/ZarGatesChannel TG RU: http://t.me/ZarGatesRU X: https://x.com/ZARGATES Website: zargates.com 🚀 Let's go — adventure awaits!",
   "image": "https://metadata.zargates.com/giftbox/collection_image.png",
   "name": "ZarGates GiftBoxes",
   "social": [
@@ -183,8 +234,21 @@
   ]
  },
  {
+  "address": "0:58b22ef862a9e6412d427026d443e918728069d84a482f8621fc1e7dd304d6f5",
+  "description": "NFT ZarGates Scratch Card is your invite to the Pre-launch of PvP Vibe:  AI platform for game creation and publishing without any programming skills. Every Scratch Card guaranties a reward from $10 to $5,000 for your deposit. Open Scratch Card till May 15 and get: Alpha Sword NFT. Exclusive USDT drops. Premium+ service discounts. Join the most Epic battle in the history of NFT!",
+  "image": "https://metadata.zargates.com/scratch-card-0/collection_image.png",
+  "name": "ZarGates Scratch Cards",
+  "social": [
+   "http://t.me/pvpvibechat",
+   "http://t.me/pvpvibechatRU"
+  ],
+  "websites": [
+   "https://pvpvibe.com"
+  ]
+ },
+ {
   "address": "0:733d5b87a1247f425045b72262c837c974acbe769dac3816d8d2cd01052cda32",
-  "description": "THE GOLDEN ORC HUNTING SEASON IS OPEN! \ud83d\udd25 OPEN STICKERBOXES, pull stickers, and join the treasure hunt! Assemble a squad of Golden Orcs, gear them up with artifacts in ZarGates, and win valuable prizes! 100% of all proceeds go toward the prize pool and collection promotion. \ud83d\udc8e Don't miss your chance to claim your share of the loot from the $300,000 prize pool! \u2705 Details in the official channels: TG ENG: https://t.me/ZarGatesChannel TG RU: http://t.me/ZarGatesRU X: https://x.com/ZARGATES Website: zargates.com \ud83d\ude80 Let's go \u2014 adventure awaits!",
+  "description": "THE GOLDEN ORC HUNTING SEASON IS OPEN! 🔥 OPEN STICKERBOXES, pull stickers, and join the treasure hunt! Assemble a squad of Golden Orcs, gear them up with artifacts in ZarGates, and win valuable prizes! 100% of all proceeds go toward the prize pool and collection promotion. 💎 Don't miss your chance to claim your share of the loot from the $300,000 prize pool! ✅ Details in the official channels: TG ENG: https://t.me/ZarGatesChannel TG RU: http://t.me/ZarGatesRU X: https://x.com/ZARGATES Website: zargates.com 🚀 Let's go — adventure awaits!",
   "image": "https://metadata.zargates.com/stickerbox/collection_image.png",
   "name": "Zargates StickerBoxes",
   "social": [
@@ -199,7 +263,7 @@
  },
  {
   "address": "0:463685d77d0474ec774386d92622ed688d34f07230741211d838c487dcfeec64",
-  "description": "THE GOLDEN ORC HUNTING SEASON IS OPEN! ZarGates offers a massive bounty to all treasure hunters out there for capturing them. \ud83c\udfaf Hunt rules: Color matters. Golden Orcs are the most valuable. COLLECT 7 of them to build a full squad and increase your reward. Gear up your squad to boost your odds \u2014 and \ud83d\udc8e claim your share of the loot from the $300,000 prize pool! \u2705 Details in the official channels: TG ENG: https://t.me/ZarGatesChannel TG RU: http://t.me/ZarGatesRU X: https://x.com/ZARGATES Website: zargates.com \ud83d\ude80 Let's go \u2014 adventure awaits!",
+  "description": "THE GOLDEN ORC HUNTING SEASON IS OPEN! ZarGates offers a massive bounty to all treasure hunters out there for capturing them. 🎯 Hunt rules: Color matters. Golden Orcs are the most valuable. COLLECT 7 of them to build a full squad and increase your reward. Gear up your squad to boost your odds — and 💎 claim your share of the loot from the $300,000 prize pool! ✅ Details in the official channels: TG ENG: https://t.me/ZarGatesChannel TG RU: http://t.me/ZarGatesRU X: https://x.com/ZARGATES Website: zargates.com 🚀 Let's go — adventure awaits!",
   "image": "https://metadata.zargates.com/stickers/collection_image.png",
   "name": "Unstoppable Tribe from ZarGates",
   "social": [
@@ -214,7 +278,7 @@
  },
  {
   "address": "0:c5e44022dc5a4785cb0bc0493960e990edf0c0cfcdf66c8621fcc757ba0a72ed",
-  "description": "Explore Anycraft\u2019s exclusive NFT collection, where each item is crafted by players from unique creations. In Anycraft, only the original inventor of an item or a new recipe has the right to mint an NFT. \u2b50 Gold stars mark first discoveries, while silver stars represent unique crafting methods. All NFTs can be imported back into the game for more crafting possibilities. Plus, each NFT unlocks free boosters and other benefits \u2014 check them out in Anycraft!",
+  "description": "Explore Anycraft’s exclusive NFT collection, where each item is crafted by players from unique creations. In Anycraft, only the original inventor of an item or a new recipe has the right to mint an NFT. ⭐ Gold stars mark first discoveries, while silver stars represent unique crafting methods. All NFTs can be imported back into the game for more crafting possibilities. Plus, each NFT unlocks free boosters and other benefits — check them out in Anycraft!",
   "image": "https://public.anycraft.io/nft/assets/collection_logo.png",
   "name": "Anycraft Unique Crafts",
   "social": [
@@ -240,7 +304,7 @@
  },
  {
   "address": "0:f2bd3b92c32358d75b6eb78e053e41b30fd3d46cd70f814ff005afb4aeecee1a",
-  "description": "Degrees\u2019 is a limited collection of 361\u00b0 available items. Each Degree\u00b0 has its own unique angle, contains a maths fact about its value and is an essential component to getting a complete user experience in the Degrees\u00b0 app.",
+  "description": "Degrees’ is a limited collection of 361° available items. Each Degree° has its own unique angle, contains a maths fact about its value and is an essential component to getting a complete user experience in the Degrees° app.",
   "image": "https://raw.githubusercontent.com/msilenkov/ONE/245f76be45fc9e32a60de758bf8c39e5dce99cd7/degrees.svg",
   "links": {
    "bot": "https://prodegreesbot.t.me",
@@ -259,7 +323,17 @@
  },
  {
   "address": "0:fb783c4fff02d7d7c92bf2ec987eceacae582834c7d16d735833c7663174f6bf",
-  "name": "CALLIGRAFUTURISM \u2014 24: Units"
+  "name": "CALLIGRAFUTURISM — 24: Units"
+ },
+ {
+  "address": "0:7958c516fb3c518f5cb1c9bfc7140db917655e19bd4b90f32ba576620f847851",
+  "description": "Personalized SBT Rewards for Grouche Platform users.",
+  "image": "https://cdn.grouche.com/sbt/grc.jpg",
+  "name": "Grouche Rewards",
+  "social": [
+   "https://x.com/grouchecoin",
+   "https://t.me/grouche_coin"
+  ]
  },
  {
   "address": "0:921518859bfaa3bfb5ba4bdc6323b658d9725e71485de15ca62e096c384f3c94",

@@ -66,3 +66,47 @@
   name: "Zero Address"
 - address: "Uf___________________________________________-ll"
   name: "Blackhole Address"
+- address: UQB65QVsP9lAb5u758cInNTECAHZB1SGy-23zhLfEZ6s8f8A
+  name: TONAPI main gas proxy
+- address: 0:e065d735fc349ad0d8674033798b99af76f8dce671a9c49d4fe9164e644a6a52
+  name: TONAPI gas proxy
+- address: 0:0dc09ed193e47757057ed6eee7fb0677719f31bd8828113ed52d47abf23447da
+  name: TONAPI gas proxy
+- address: 0:736118ab10bedfb4031dc904ec9d7c9061a905f6efa5d8f55d684233b715b57b
+  name: TONAPI gas proxy
+- address: 0:d8a041801857f7132d1dc9b9dba617836a87cf3914aebbe3d7415ebe925f40cb
+  name: TONAPI gas proxy
+- address: 0:147cb558f69a4d95d99f76a6d600e839172eecbf4c06d1a2695f430274fa956f
+  name: TONAPI gas proxy
+- address: 0:3da40403e1e387c49e1370f47cc83aed6b5d16911495942788c6eff94ceec39d
+  name: TONAPI gas proxy
+- address: 0:a8ddb23c8ffd94fa844cfe0fbce907f4ccf01e24ab0b135929079edc50f43e4b
+  name: TONAPI gas proxy
+- address: 0:f0f44efb4627d8e5cf595f35c83b5f94f46f3e6d162bd765b540364c5fc08a29
+  name: TONAPI gas proxy
+- address: 0:bd2c0a589c6b68eae98c90c6e9517d2357041693bd6eca2c24aa9ffac9f7a51d
+  name: TONAPI gas proxy
+- address: 0:6b2bcd8f945e64994818a4ca3fd79caba83d8a41edc102f8ff4d93d31d47815e
+  name: TONAPI gas proxy
+- address: 0:407a1a5774ed6dc0cb50aa5d300e951eb1ab097281b2d1890d96baf5894f3416
+  name: TONAPI gas proxy
+- address: 0:c1d82b71f1a5cccfb520313f2d8689950b6deeb24c9a43eeb5d5fe851390008e
+  name: TONAPI gas proxy
+- address: 0:5a3a8cb244414663d8669f0f3716b9892127dfd16a8b9daac48ea34386261bca
+  name: TONAPI gas proxy
+- address: 0:2ae6b1f8033693865134e098f0380b9580c00169b412d2c5be85abf5001753f1
+  name: TONAPI gas proxy
+- address: 0:93b37955923cf99faeb772929fa75d92bf00db01aa92fd66174d904852a1bf90
+  name: TONAPI gas proxy
+- address: 0:89009a16daa89aa2f9969ba0a6c98a7a692e94731d34fcb530fc25c5857a5d7b
+  name: TONAPI gas proxy
+- address: UQDwB8YlfqX_bYO4cGGSkIJYUcgqlij6fhuEwEAhLAppLezQ
+  name: battery.ton
+- address: UQCxagYYYMnzidTvQf39qnkUvAkWfbn1N3teqVxQTtdrd3Zw
+  name: Tonkeeper Pro Subscriptions
+- address: 0:f6ff877dd4ce1355b101572045f09d54c29309737eb52ca542cfa6c195f7cc5b
+  name: Stakee
+- address: EQA9HwEZD_tONfVz6lJS0PVKR5viEiEGyj9AuQewGQVnXPg0
+  name: KTON
+- address: EQDsW2P6nuP1zopKoNiCYj2xhqDan0cBuULQ8MH4o7dBt_7a
+  name: pKTON

@@ -1,0 +1,68 @@
+name: Weekly upstream sync
+# يفتح PR بدل الدفع المباشر — يحل مشكلة «1679 كومِت تأخّر»
+on:
+  schedule:
+    - cron: '17 4 * * 1'      # كل اثنين 04:17 UTC
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout with full history
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'   # pydantic==1.9.2 في requirements لا يدعم 3.12+
+          cache: pip
+      - name: Install libraries
+        run: pip install -r requirements.txt
+      - name: Fetch upstream
+        run: |
+          git remote add upstream https://github.com/tonkeeper/ton-assets.git 2>/dev/null || true
+          git fetch upstream --no-tags
+      - name: Merge upstream into a sync branch
+        id: merge
+        run: |
+          BR="sync/upstream-$(date +%F)"
+          echo "branch=$BR" >> "$GITHUB_OUTPUT"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions@users.noreply.github.com"
+          git checkout -B "$BR" origin/main
+          if ! git merge --no-edit upstream/main; then
+            echo "conflict=true" >> "$GITHUB_OUTPUT"
+            git merge --abort
+            echo "::warning::تعارض عند دمج upstream — يحتاج تدخلاً يدوياً."
+            exit 0
+          fi
+          echo "conflict=false" >> "$GITHUB_OUTPUT"
+      - name: Regenerate and validate
+        if: steps.merge.outputs.conflict == 'false'
+        run: |
+          python3 generator.py
+          python3 validate_assets.py
+      - name: Push branch
+        if: steps.merge.outputs.conflict == 'false'
+        run: |
+          BR="${{ steps.merge.outputs.branch }}"
+          if [[ -n $(git status --porcelain) ]]; then git add -A; git commit -m 'chore: regenerate after upstream sync'; fi
+          git push --force-with-lease origin "$BR"
+      - name: Open or update PR
+        if: steps.merge.outputs.conflict == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BR="${{ steps.merge.outputs.branch }}"
+          if gh pr list --head "$BR" --json number | grep -q '[0-9]'; then
+            echo "PR موجود بالفعل لـ $BR"
+          else
+            gh pr create --base main --head "$BR" \
+              --title "chore: weekly upstream sync $BR" \
+              --body "مزامنة تلقائية من tonkeeper/ton-assets. راجع الفروق قبل الدمج. تم تمرير validate_assets.py."
+          fi
