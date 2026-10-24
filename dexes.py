@@ -1,9 +1,13 @@
 import logging
+import os
 import yaml
 from typing import List
 
 import requests
 from pydantic import BaseModel
+
+OFFLINE = os.environ.get("TON_ASSETS_OFFLINE") == "1"
+TIMEOUT = 30   # يمنع تعليق الـ job إلى الأبد
 
 
 class Asset(BaseModel):
@@ -24,89 +28,140 @@ class StonfiAsset(BaseModel):
     kind: str
     decimals: int
     community: bool
-    deprecated: bool
     blacklisted: bool
+    deprecated: bool
 
 
 def __get_stonfi_assets() -> List[Asset]:
-    url = "https://api.ston.fi/v1/assets"
-    response = requests.get(url)
-    if response.status_code != 200:
-        logging.error("failed to get stonfi assets")
+    if OFFLINE:
         return list()
-    data = response.json()
-    stonfi_assets = [StonfiAsset(**item) for item in data["asset_list"]]
+    try:
+        response = requests.get("https://api.ston.fi/v1/assets", timeout=TIMEOUT)
+        if response.status_code != 200:
+            logging.error("failed to get stonfi assets (%s)", response.status_code)
+            return list()
+        data = response.json()
+    except Exception as e:
+        logging.error("stonfi request failed: %s", e)
+        return list()
     assets = list()
-    for asset in stonfi_assets:
-        if asset.community or asset.blacklisted or asset.deprecated or asset.kind != "Jetton":
+    for item in data.get("asset_list", []):
+        try:
+            a = StonfiAsset(**item)
+            if a.community or a.blacklisted or a.deprecated or a.kind != "Jetton":
+                continue
+            assets.append(Asset(name=a.display_name, address=a.contract_address, symbol=a.symbol))
+        except Exception:
             continue
-        assets.append(Asset(name=asset.display_name, address=asset.contract_address, symbol=asset.symbol))
     return assets
 
 
 def __get_megaton_assets() -> List[Asset]:
-    url = "https://megaton.fi/api/token/infoList"
-    response = requests.get(url)
-    if response.status_code != 200:
-        logging.error("failed to get megaton assets")
+    if OFFLINE:
         return list()
-    data = response.json()
-    megaton_assets = [MegatonAsset(**item) for item in data]
+    try:
+        response = requests.get("https://megaton.fi/api/token/infoList", timeout=TIMEOUT)
+        if response.status_code != 200:
+            return list()
+        data = response.json()
+    except Exception as e:
+        logging.error("megaton request failed: %s", e)
+        return list()
     assets = list()
-    for asset in megaton_assets:
-        if asset.isVisible != 1 or asset.type != 2:
+    for item in data:
+        try:
+            a = MegatonAsset(**item)
+            if a.isVisible == 1 and a.type == 2:
+                assets.append(Asset(name=a.name, address=a.address, symbol=a.symbol))
+        except Exception:
             continue
-        assets.append(Asset(name=asset.name, address=asset.address, symbol=asset.symbol))
     return assets
 
 
 def __get_dedust_assets() -> List[Asset]:
-    url = "https://assets.dedust.io/list.json"
-    response = requests.get(url)
-    if response.status_code != 200:
-        logging.error("failed to get dedust assets")
+    if OFFLINE:
         return list()
-    data = response.json()
+    try:
+        response = requests.get("https://assets.dedust.io/list.json", timeout=TIMEOUT)
+        if response.status_code != 200:
+            logging.error("failed to get dedust assets (%s)", response.status_code)
+            return list()
+        data = response.json()
+    except Exception as e:
+        logging.error("dedust request failed: %s", e)
+        return list()
+    # عناوين غير موثوقة — لا تُدرج في القائمة أبداً
+    b_addrs = {
+        "EQBiyZMUXvdnRYFUk3_R5uPdsR2ROI9mes_1S-jL1tIQDhDK",
+        "EQB22u_EPF5DyqtZRhjJ2YiZliN-w5ZCq6F_PY6Ia6bvi3Et",  # DUROV, untrusted (#6312)
+    }
     assets = list()
-    b_addrs = {"EQBiyZMUXvdnRYFUk3_R5uPdsR2ROI9mes_1S-jL1tIQDhDK"}
     for item in data:
         addr = item.get("address")
         if not addr or addr in b_addrs:
             continue
-        assets.append(Asset(**item))
+        try:
+            assets.append(Asset(**item))
+        except Exception:
+            continue
     return assets
 
 
 def __get_backed_assets() -> List[Asset]:
-    url = "https://api.backed.fi/api/v1/token"
-    response = requests.get(url)
-    if response.status_code != 200:
-        logging.error("failed to get dedust assets")
+    if OFFLINE:
         return list()
-    data = response.json()
+    try:
+        response = requests.get("https://api.backed.fi/api/v1/token", timeout=TIMEOUT)
+        if response.status_code != 200:
+            logging.error("failed to get backed assets (%s)", response.status_code)
+            return list()
+        data = response.json()
+    except Exception as e:
+        logging.error("backed request failed: %s", e)
+        return list()
     assets = list()
-    for item in data['nodes']:
+    for item in data.get("nodes", []):
         ton_addr = ""
-        for d in item["deployments"]:
-            if d["network"].lower() == "ton":
+        for d in item.get("deployments", []):
+            if d.get("network", "").lower() == "ton":
                 ton_addr = d["address"].removeprefix("ton:")
         if ton_addr == "":
             continue
-        assets.append(Asset(name=item["name"], address=ton_addr, symbol=item["symbol"]))
-
+        try:
+            assets.append(Asset(name=item["name"], address=ton_addr, symbol=item["symbol"]))
+        except Exception:
+            continue
     return assets
 
 
 def update_stonfi_routers():
-    response = requests.get("https://api.ston.fi/v1/routers")
-    if response.status_code != 200:
-        logging.error("failed to update stonfi routers")
+    if OFFLINE:
+        logging.warning("OFFLINE — تخطّي تحديث راوترات STON.fi")
         return
-    data = response.json()
-    routers = list()
-    for item in data['router_list']:
-        routers.append({"address": item["address"], "name": "STON.fi DEX"})
+    try:
+        response = requests.get("https://api.ston.fi/v1/routers", timeout=TIMEOUT)
+        if response.status_code != 200:
+            logging.error("failed to update stonfi routers (%s)", response.status_code)
+            return
+        data = response.json()
+    except Exception as e:
+        logging.error("routers request failed: %s", e)
+        return
+    routers = [{"address": item["address"], "name": "STON.fi DEX"}
+               for item in data.get("router_list", []) if item.get("address")]
     if len(routers) == 0:
+        logging.warning("0 راوتر — الاحتفاظ بـ accounts/ston.yaml الموجود")
         return
-    with open("accounts/ston.yaml", "w") as f:
+    path = "accounts/ston.yaml"
+    try:
+        old = yaml.safe_load(open(path, encoding="utf-8")) or []
+        if isinstance(old, dict):
+            old = [old]
+    except Exception:
+        old = []
+    if old and len(routers) < len(old) * 0.5:
+        logging.warning("الراوترات الجديدة (%d) أقل من نصف الموجودة (%d) — الاحتفاظ", len(routers), len(old))
+        return
+    routers.sort(key=lambda x: x["address"])
+    with open(path, "w", encoding="utf-8") as f:
         yaml.safe_dump(routers, f, sort_keys=True, allow_unicode=True)

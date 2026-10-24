@@ -1,29 +1,38 @@
 name: Test source files for correctness
+# يعمل الآن على main أيضاً (كان branches-ignore: main)
 on:
   pull_request:
   push:
-    branches-ignore:
+    branches:
       - main
+      - '**'
   workflow_dispatch:
 
 jobs:
   source-syntax-check:
     runs-on: ubuntu-latest
+    env:
+      TON_ASSETS_OFFLINE: ''
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v3
-
+        uses: actions/checkout@v7
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'   # pydantic==1.9.2 في requirements لا يدعم 3.12+
+          cache: pip
       - name: Check that source dirs contain only *.yaml files
         run: |
-          # Behold bash power and tremble!
           shopt -s extglob
           shopt -s nullglob
           for FILENAME in {accounts,collections,jettons}/!(*.yaml); do
             [ "${FILENAME}" == 'jettons/example.yaml.template' ] && continue
-            echo "Found '${FILENAME}' file but only *.yaml files are allowed here."
+            echo "Found '${FILENAME}' but only *.yaml files are allowed here."
             exit 1
           done
       - name: Install libraries
-        run: pip3 install -r requirements.txt
-      - name: Dummy run of generator to check for correct syntax
+        run: pip install -r requirements.txt
+      - name: Dummy run of generator to check syntax
         run: python3 generator.py
+      - name: Validate generated JSON
+        run: python3 validate_assets.py

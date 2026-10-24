@@ -1,22 +1,37 @@
 name: Parse assets from ton labels
+# لا دفع إلى main: شغّله من فرع وافتح PR
 on:
   workflow_dispatch:
+
 jobs:
   run-ton-labels-parser:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'   # pydantic==1.9.2 في requirements لا يدعم 3.12+
+          cache: pip
       - name: Install libraries
-        run: pip3 install -r requirements.txt
+        run: pip install -r requirements.txt
       - name: Run ton-labels-parser
         run: python3 parser.py
-      - name: commit and push if there are changes
+      - name: Refuse to run on main
+        if: github.ref == 'refs/heads/main'
         run: |
-          if [[ `git status --porcelain` ]]; then
-            git config --global user.name "github-actions[bot]"
-            git config --global user.email "github-actions@users.noreply.github.com"
+          echo "شغّل هذا الـ workflow من فرع، ثم افتح PR. الدفع المباشر إلى main معطّل."
+          exit 1
+      - name: Commit and push to this branch
+        if: github.ref != 'refs/heads/main'
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions@users.noreply.github.com"
             git add -A
-            git commit -m 'Regenerate json and Readme'
+            git commit -m 'Parse ton labels'
             git push
           fi
